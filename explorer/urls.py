@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from explorer.views import QueryView, CreateQueryView, PlayQueryView, DeleteQueryView, ListQueryView, ListQueryLogView
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'(?P<query_id>\d+)/$', QueryView.as_view(), name='query_detail'),
     url(r'(?P<query_id>\d+)/download$', 'explorer.views.download_query', name='query_download'),
     url(r'(?P<query_id>\d+)/csv', 'explorer.views.view_csv_query', name='query_csv'),
@@ -13,4 +13,4 @@ urlpatterns = patterns('',
     url(r'logs/$', ListQueryLogView.as_view(), name='explorer_logs'),
     url(r'format/$', 'explorer.views.format_sql', name='format_sql'),
     url(r'^$', ListQueryView.as_view(), name='explorer_index'),
-)
+]
